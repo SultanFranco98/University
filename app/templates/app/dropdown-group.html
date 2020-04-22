@@ -1,0 +1,4 @@
+<option class="input--style-3" value="">---------</option>
+{% for group in groups %}
+<option class="input--style-3" value="{{ group.pk }}">{{ group.title }}</option>
+{% endfor %}

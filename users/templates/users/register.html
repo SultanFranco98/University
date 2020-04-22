@@ -1,0 +1,106 @@
+{% extends "users/index.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+    Регистрация
+{% endblock title %}
+
+{% block content %}
+<div class="sf">
+  <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w780">
+            <div class="card card-3">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <h2 class="title">Регистрация</h2>
+                    <form method="POST"  id="studentForm" data-cities-url="{% url 'ajax_load_specialitys' %}" data-groups-url="{% url 'ajax_load_groups' %}" >
+                           {% csrf_token %}
+                        {% for error in form.non_field_errors %}
+                                <span class="error-message" style="color:red">{{ error }}</span>
+                            {% endfor %}
+                            {% if user_form.errors %}
+                                {% for field in user_form %}
+                                    {% for error in field.errors %}
+                                        <div class="alert alert-danger">
+                                             <span class="error-message" style="color:red">{{ error|escape }}</span> <br>
+                                        </div>
+                                    {% endfor %}
+                                {% endfor %}
+                        {% endif %}
+                        <div class="input-group">
+                             {{ user_form.username }}
+                        </div>
+                        <div class="input-group">
+                            {{ user_form.password1 }}
+                        </div>
+                          <div class="input-group">
+                            {{ user_form.password2 }}
+                        </div>
+                         <div class="input-group">
+                            {{ student_form.full_name }}
+                        </div>
+                          <div class="input-group">
+                            {{ student_form.faculty }}
+                        </div>
+                          <div class="input-group">
+                            {{ student_form.speciality }}
+                        </div>
+                          <div class="input-group">
+                            {{ student_form.group }}
+                        </div>
+                          <div class="input-group">
+                            {{ student_form.dateOfBirth }}
+                        </div>
+                          <div class="input-group">
+                            {{ student_form.gender }}
+                        </div>
+                          <div class="input-group">
+                            {{ student_form.email }}
+                        </div>
+                          <div class="input-group">
+                            {{ student_form.phone }}
+                        </div>
+                        <div class="p-t-10">
+                             <input type="submit" name="signup"  class="btn btn--pill btn--green" value="Регистрация"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $("#id_faculty").change(function () {
+      var url = $("#studentForm").attr("data-cities-url");  // get the url of the `load_cities` view
+      var facultyId = $(this).val();  // get the selected country ID from the HTML input
+
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'faculty': facultyId       // add the country id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_speciality").html(data);  // replace the contents of the city input with the data that came from the server
+        }
+      });
+
+    });
+    $("#id_speciality").change(function () {
+      var url = $("#studentForm").attr("data-groups-url");  // get the url of the `load_cities` view
+      var specialityId = $(this).val();  // get the selected country ID from the HTML input
+
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'speciality': specialityId       // add the country id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_group").html(data);  // replace the contents of the city input with the data that came from the server
+        }
+      });
+
+    });
+  </script>
+    {% endblock content %}

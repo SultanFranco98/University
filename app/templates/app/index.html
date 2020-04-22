@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+        {% block title %}
+        {% endblock title %}
+      </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'app/css/css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/css/animate.css' %}">
+
+    <link rel="stylesheet" href="{% static 'app/css/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'app/css/css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'app/css/css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'app/css/css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/css/jquery.timepicker.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'app/css/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/css/style.css' %}">
+      <link rel="stylesheet" href="{% static 'app/table.css' %}">
+  </head>
+  <body>
+
+	<div id="colorlib-page">
+		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+		<aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
+			<nav id="colorlib-main-menu" role="navigation">
+				<ul>
+                    <li class="colorlib"> Личный кабинет </li>
+					<li class="colorlib-active"><a href="{% url 'Home' %}"> Домой </a></li>
+                    {% if user.is_student %}
+					<li ><a href="{% url 'aboutStudents' %}">О себе</a></li>
+                    <li><a href="{% url 'listAllReference' %}">Cправки</a></li>
+                    {% endif %}
+                    {% if user.is_staff %}
+                    <li><a href="{% url 'admin:index' %}">Админ панель</a></li>
+					<li><a href="{% url 'statistics' %}">Статистика</a></li>
+                    {% endif %}
+					<li><a href="{% url 'logout' %}">Выход</a></li>
+
+				</ul>
+			</nav>
+		</aside>
+
+    </div>
+  {% block content %}
+        {% endblock content %}
+  </body>
+</html>

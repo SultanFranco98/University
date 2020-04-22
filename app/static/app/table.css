@@ -1,0 +1,110 @@
+
+.a {
+    color: black;
+}
+
+.container{
+    color: black;
+    display: flex;
+    flex-direction: column;
+    width: 1140px;
+    margin: 0 auto;
+}
+.bread_crumbs{
+    margin: 40px 0;
+}
+.crumb{
+    background: #EADCDC;
+    border-radius: 10px;
+    padding: 5px;
+}
+.search_table{
+    margin: 40px 0;
+    width: 400px;
+    position: relative;
+    right: 0;
+    align-self: flex-end ;
+    
+}
+
+.search_table input{
+    background: #EADCDC;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    width: 100%;
+}
+.table{
+    width: 1240px;
+    position: relative;
+    margin: 0 auto;
+    background: #212126;
+    border-radius: 5px;
+    padding: 10px;
+}
+.table_panel,
+.table_record{
+display: flex;
+justify-content: space-between;
+padding: 10px;
+width: 1070px;
+}
+
+.table_panel{
+    background: #5CC794!important;
+    
+}
+.table_record,
+.table_panel{
+    border-radius: 5px;
+    background: #EADCDC;
+    margin: 8px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+.table_name{
+    width: 300px;
+}
+.table_mail{
+    width: 200px;
+}
+.table_faculty{
+    width: 100px;
+}
+.table_group{
+    width: 100px;
+}
+.table_status{
+    width: 150px;
+}
+.table_employee{
+width: 150px;
+}
+.table_edit{
+    width: 100px;
+}
+.table_edit img{
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+.pagination{
+   align-self: center;
+   margin: 40px 0;
+   cursor: pointer;
+
+}
+.pagination span,
+.filter select,
+.filter select option{
+border-radius: 5px;
+background: #EADCDC;
+padding: 8px;
+
+}
+.filter{
+    align-self: flex-end;
+    margin: 20px 0 ;
+}

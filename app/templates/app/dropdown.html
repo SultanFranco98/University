@@ -1,0 +1,8 @@
+<option class="input--style-3" value="">---------</option>
+
+{% for speciality in specialitys %}
+<option class="input--style-3" value="{{ speciality.pk }}" >{{ speciality.title }}</option>
+{% endfor %}
+
+
+
